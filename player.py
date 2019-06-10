@@ -12,6 +12,7 @@ Features:
 import pandas as pd
 import numpy as np
 from naive_bayes import NaiveBayes
+from perceptron import  MultiClassPerceptron
 number_of_features = 12
 
 #indexes: 0-4 plays, 5 round, 6 score, 7 age, 8 sex, 9 education, 10 income, 11 personality
@@ -37,7 +38,13 @@ feature_dim = 12
 num_value = 10
 data = np.load('data.npy')
 labels = np.load('labels.npy')
+print("Bayes:")
 Bayes = NaiveBayes(num_class,feature_dim,num_value)
 Bayes.train(data, labels)
 guess = Bayes.guess(features)
+Bayes.test(data, labels)
 print(guess)
+print("Perceptron:")
+Perceptron = MultiClassPerceptron(num_class,feature_dim)
+Perceptron.train(data, labels)
+Perceptron.test(data, labels)

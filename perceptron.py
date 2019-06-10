@@ -33,7 +33,7 @@ class MultiClassPerceptron(object):
 		#print(self.w.shape)
 
 		lrate = 1/self.w.shape[0]
-		num_iter = 30
+		num_iter = 10000
 
 		self.__train(train_set, train_label, lrate, num_iter)
 
@@ -137,6 +137,7 @@ class MultiClassPerceptron(object):
 		for classes in range(number_of_classes):
 			dot_product[classes] = np.dot(test_set, self.w[:,classes])
 		predicted_label_index = np.argmax(dot_product)
+		print(dot_product)
 		return predicted_label_index
 
 	def save_model(self, weight_file):

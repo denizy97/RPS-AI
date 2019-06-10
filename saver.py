@@ -29,12 +29,13 @@ for line in f:
             list[index+1530][0] = plays[index+1530-1]
         plays[index] = 1
         plays[index+1530] = 1
-        labels[index] = 1
-        labels[index+1530] = 1
+        labels[index] = 0
+        labels[index+1530] = 0
         list[index][5] = round
-        list[index][6] += 0
+        if index != 3060-1 and index != 1530-1:
+            list[index+1][6] += 0
+            list[index+1530+1][6] += 0
         list[index+1530][5] = round
-        list[index+1530][6] += 0
     elif "sp" in line:
         if index != 0 and not unique:
             list[index][4] = list[index-1][3]
@@ -49,12 +50,13 @@ for line in f:
             list[index+1530][0] = plays[index+1530-1]
         plays[index] = 2
         plays[index+1530] = 4
-        labels[index] = 1
-        labels[index+1530] = 2
+        labels[index] = 0
+        labels[index+1530] = 1
         list[index][5] = round
-        list[index][6] += -1
+        if index != 3060-1 and index != 1530-1:
+            list[index+1][6] += -1
+            list[index+1530+1][6] += 1
         list[index+1530][5] = round
-        list[index+1530][6] += 1
     elif "sx" in line:
         if index != 0 and not unique:
             list[index][4] = list[index-1][3]
@@ -69,12 +71,13 @@ for line in f:
             list[index+1530][0] = plays[index+1530-1]
         plays[index] = 3
         plays[index+1530] = 7
-        labels[index] = 1
-        labels[index+1530] = 3
+        labels[index] = 0
+        labels[index+1530] = 2
         list[index][5] = round
-        list[index][6] += 1
+        if index != 3060-1 and index != 1530-1:
+            list[index+1][6] += 1
+            list[index+1530+1][6] += -1
         list[index+1530][5] = round
-        list[index+1530][6] += -1
     elif "ps" in line:
         if index != 0 and not unique:
             list[index][4] = list[index-1][3]
@@ -89,12 +92,13 @@ for line in f:
             list[index+1530][0] = plays[index+1530-1]
         plays[index] = 4
         plays[index+1530] = 2
-        labels[index] = 2
-        labels[index+1530] = 1
+        labels[index] = 1
+        labels[index+1530] = 0
         list[index][5] = round
-        list[index][6] += 1
+        if index != 3060-1 and index != 1530-1:
+            list[index+1][6] += 1
+            list[index+1530+1][6] += -1
         list[index+1530][5] = round
-        list[index+1530][6] += -1
     elif "pp" in line:
         if index != 0 and not unique:
             list[index][4] = list[index-1][3]
@@ -109,12 +113,13 @@ for line in f:
             list[index+1530][0] = plays[index+1530-1]
         plays[index] = 5
         plays[index+1530] = 5
-        labels[index] = 2
-        labels[index+1530] = 2
+        labels[index] = 1
+        labels[index+1530] = 1
         list[index][5] = round
-        list[index][6] += 0
+        if index != 3060-1 and index != 1530-1:
+            list[index+1][6] += 0
+            list[index+1530+1][6] += 0
         list[index+1530][5] = round
-        list[index+1530][6] += 0
     elif "px" in line:
         if index != 0 and not unique:
             list[index][4] = list[index-1][3]
@@ -129,12 +134,13 @@ for line in f:
             list[index+1530][0] = plays[index+1530-1]
         plays[index] = 6
         plays[index+1530] = 8
-        labels[index] = 2
-        labels[index+1530] = 3
+        labels[index] = 1
+        labels[index+1530] = 2
         list[index][5] = round
-        list[index][6] += -1
+        if index != 3060-1 and index != 1530-1:
+            list[index+1][6] += -1
+            list[index+1530+1][6] += 1
         list[index+1530][5] = round
-        list[index+1530][6] += 1
     elif "xs" in line:
         if index != 0 and not unique:
             list[index][4] = list[index-1][3]
@@ -149,12 +155,13 @@ for line in f:
             list[index+1530][0] = plays[index+1530-1]
         plays[index] = 7
         plays[index+1530] = 3
-        labels[index] = 3
-        labels[index+1530] = 1
+        labels[index] = 2
+        labels[index+1530] = 0
         list[index][5] = round
-        list[index][6] += -1
+        if index != 3060-1 and index != 1530-1:
+            list[index+1][6] += -1
+            list[index+1530+1][6] += 1
         list[index+1530][5] = round
-        list[index+1530][6] += 1
     elif "xp" in line:
         if index != 0 and not unique:
             list[index][4] = list[index-1][3]
@@ -169,12 +176,13 @@ for line in f:
             list[index+1530][0] = plays[index+1530-1]
         plays[index] = 8
         plays[index+1530] = 6
-        labels[index] = 3
-        labels[index+1530] = 2
+        labels[index] = 2
+        labels[index+1530] = 1
         list[index][5] = round
-        list[index][6] += 1
+        if index != 3060-1 and index != 1530-1:
+            list[index+1][6] += 1
+            list[index+1530+1][6] += -1
         list[index+1530][5] = round
-        list[index+1530][6] += -1
     elif "xx" in line:
         if index != 0 and not unique:
             list[index][4] = list[index-1][3]
@@ -189,14 +197,13 @@ for line in f:
             list[index+1530][0] = plays[index+1530-1]
         plays[index] = 9
         plays[index+1530] = 9
-        labels[index] = 3
-        labels[index+1530] = 3
+        labels[index] = 2
+        labels[index+1530] = 2
         list[index][5] = round
-        list[index][6] += 0
+        if index != 3060-1 and index != 1530-1:
+            list[index+1][6] += 0
+            list[index+1530+1][6] += 0
         list[index+1530][5] = round
-        list[index+1530][6] += 0
-    if index == 1338:
-        print(line)
     if round / 9 < 1:
         round += 1
     unique = False
@@ -213,4 +220,4 @@ array_reloaded = np.load('data.npy')
 label_reloaded = np.load('labels.npy')
 print(array_reloaded)
 print(array_reloaded[0])
-print(label_reloaded[1338])
+print(label_reloaded)
