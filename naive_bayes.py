@@ -22,7 +22,7 @@ class NaiveBayes(object):
 		self.num_class = num_class
 		self.feature_dim = feature_dim
 		self.label_table = dict()
-		self.index_of_labels = dict()
+		self.real_labels = dict()
 		self.num_examples = 0
 
 		self.prior_counts = np.zeros((num_class))
@@ -46,7 +46,7 @@ class NaiveBayes(object):
 		#print(train_set.shape)
 		#print(train_label.shape)
 
-		laplace_smoothing_value = 0.1
+		laplace_smoothing_value = 1
 		self.num_examples = train_set.shape[0]
 		number_of_features = train_set.shape[1]
 
@@ -60,10 +60,12 @@ class NaiveBayes(object):
 			if train_label[example] not in self.label_table:
 				self.label_table[train_label[example]] = count
 				count += 1
+			#print(example)
+			#print(self.label_table)
 			self.prior_counts[self.label_table[train_label[example]]] += 1
 
 		for key in self.label_table:
-			self.index_of_labels[self.label_table[key]] = key
+			self.real_labels[self.label_table[key]] = key
 
 		# print(self.label_table)
 		# print(self.index_of_labels)
@@ -76,7 +78,7 @@ class NaiveBayes(object):
 		for example in range(self.num_examples):
 			for feature in range(number_of_features):
 				feature_value = train_set[example][feature]
-				self.likelihood_counts[feature][feature_value][train_label[example]] += 1
+				self.likelihood_counts[feature][feature_value][self.label_table[train_label[example]]] += 1
 
 		self.likelihood_counts += laplace_smoothing_value
 		self.prior_counts += laplace_smoothing_value
@@ -120,7 +122,7 @@ class NaiveBayes(object):
 					best_prediction = current_prediction
 					#predicted_label = self.index_of_labels[classes]
 					predicted_label = classes
-			pred_label[example] = predicted_label
+			pred_label[example] = self.real_labels[predicted_label]
 			best_prediction = 0
 
 		for pred in range(len(pred_label)):
@@ -146,7 +148,8 @@ class NaiveBayes(object):
 			if current_prediction > best_prediction:
 				best_prediction = current_prediction
 				#predicted_label = self.index_of_labels[classes]
-				predicted_label = classes
+				predicted_label = self.real_labels[classes]
+			print(str(classes) + " prediction: " + str(current_prediction))
 		return predicted_label
 
 	def update(self, test_set, test_label):
