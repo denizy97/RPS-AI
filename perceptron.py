@@ -105,7 +105,6 @@ class MultiClassPerceptron(object):
 		#print(test_set.shape)
 
 		number_of_examples = test_set.shape[0]
-		number_of_pixels = test_set.shape[1]
 		number_of_classes = self.w.shape[1]
 		dot_product = np.zeros(number_of_classes)
 
@@ -139,15 +138,3 @@ class MultiClassPerceptron(object):
 		predicted_label_index = np.argmax(dot_product)
 		print(dot_product)
 		return predicted_label_index
-
-	def save_model(self, weight_file):
-		""" Save the trained model parameters
-		"""
-
-		np.save(weight_file,self.w)
-
-	def load_model(self, weight_file):
-		""" Load the trained model parameters
-		"""
-
-		self.w = np.load(weight_file)

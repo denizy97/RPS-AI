@@ -21,7 +21,7 @@ number_of_features = 12
 #round: starting from 0, stops increasing after 9
 #score: ranging from 0 to 4, 2 if tie
 #age: 0-0to10 1-10to20 2-20to30 3-30to40 ... 9-90 to 100
-#sex: 0-male 10-female
+#sex: 0-male 1-female
 #education: 1-none 2-elementary 3-middle 4-high 5-uni 6-master 7-doc
 
 features = np.zeros(number_of_features, dtype = int)
