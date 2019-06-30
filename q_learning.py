@@ -32,10 +32,17 @@ class Q_Agent:
                 self.N[self.s][self.a] += 1
                 alpha = self.C / (self.C + self.N[self.s][self.a])
                 self.Q[self.s][self.a] = self.Q[self.s][self.a] + alpha * (rewardS + self.gamma * nextActionQ - self.Q[self.s][self.a])
-            if index < train_set.shape[0] and train_set[index+1][0] != 0:
+            if index < train_set.shape[0] - 1 and train_set[index+1][0] != 0:
                 self.a = (train_set[index+1][0] - 1) / 3
                 self.s = sPrime
             else:
+                if rewardS > 0:
+                    rewardS = rewardS + 1
+                else:
+                    rewardS = rewardS - 1
+                self.N[sPrime][train_label[index]] += 1
+                alpha = alpha = self.C / (self.C + self.N[sPrime][train_label[index]])
+                self.Q[sPrime][train_label[index]] = self.Q[sPrime][train_label[index]] + alpha * (rewardS + self.gamma * nextActionQ - self.Q[sPrime][train_label[index]])
                 self.reset()
 
     def act(self, state, label):
@@ -69,3 +76,8 @@ class Q_Agent:
                     nextAction = a
                     nextActionQ = self.Q[sPrime][a]
         return self.actions[nextAction]
+
+    def test(self, test_set, test_label):
+        for example in range(test_set.shape[0]):
+            act(test_set[example]test_label, )
+        pass
