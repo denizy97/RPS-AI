@@ -79,5 +79,5 @@ class Q_Agent:
 
     def test(self, test_set, test_label):
         for example in range(test_set.shape[0]):
-            act(test_set[example]test_label, )
+            act(test_set[example], test_label)
         pass

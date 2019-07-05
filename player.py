@@ -14,6 +14,7 @@ import numpy as np
 from naive_bayes import NaiveBayes
 from perceptron import  MultiClassPerceptron
 from q_learning import Q_Agent
+from mlp import MultiLayerPerceptron
 number_of_features_bayes = 12
 number_of_features_NN = 32
 """
@@ -60,17 +61,25 @@ num_class = 3
 feature_dim = 12
 num_value = 10
 data = np.load('data.npy')
+neural_data = np.load('NN_data.npy')
 labels = np.load('labels.npy')
-print("Bayes:")
-Bayes = NaiveBayes(num_class,feature_dim,num_value)
-Bayes.train(data, labels)
-guess = Bayes.guess(bayes_features)
-Bayes.test(data, labels)
-print(guess)
-print("Perceptron:")
-Perceptron = MultiClassPerceptron(num_class,feature_dim)
-Perceptron.train(data, labels)
-Perceptron.test(data, labels)
-print("Q Agent:")
-Reinforcement = Q_Agent(("rock", "paper", "scissors"), 5, 40, 0.7)
-Reinforcement.train(data, labels)
+#print("Bayes:")
+#Bayes = NaiveBayes(num_class,feature_dim,num_value)
+#Bayes.train(data, labels)
+#guess = Bayes.guess(bayes_features)
+#Bayes.test(data, labels)
+#print(guess)
+#print("Perceptron:")
+#Perceptron = MultiClassPerceptron(num_class,feature_dim)
+#Perceptron.train(data, labels)
+#Perceptron.test(data, labels)
+#print("Q Agent:")
+#Reinforcement = Q_Agent(("rock", "paper", "scissors"), 5, 40, 0.7)
+#Reinforcement.train(data, labels)
+#Reinforcement.test(data, labels)
+print("FFNN:")
+MLP = MultiLayerPerceptron(20, len(neural_data[0]))
+print("Training..")
+MLP.train(neural_data, labels, False)
+print("Testing..")
+MLP.test(neural_data, labels)

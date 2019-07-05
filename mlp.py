@@ -27,14 +27,18 @@ class MultiLayerPerceptron(object):
         if plot:
             plt.figure()
             plt.xlabel('Epoch')
-            plt.ylabel('Mean Square Error]')
+            plt.ylabel('Accuracy')
             plt.plot(hist['accuracy'], label='Train Error')
-            plt.plot(hist['val_accuracy'], label = 'Val Error')
+            plt.plot(hist['val_accuracy'], label = 'Validation Error')
             plt.legend()
             plt.ylim([0,1])
             plt.show()
 
     def test(self,test_set,test_label):
-        print(self.model.metrics_names)
-        _, accuracy = self.model.evaluate(test_set, test_label)
+        loss, accuracy = self.model.evaluate(test_set, test_label)
         print('Accuracy on test set: {}'.format(round(accuracy, 3)))
+        print('Initial Predictions:')
+        initial = test_set[0,:]
+        print(initial)
+        print(self.model.predict(test_set))
+        print(test_label)
