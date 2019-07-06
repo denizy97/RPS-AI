@@ -37,8 +37,9 @@ class MultiLayerPerceptron(object):
     def test(self,test_set,test_label):
         loss, accuracy = self.model.evaluate(test_set, test_label)
         print('Accuracy on test set: {}'.format(round(accuracy, 3)))
-        print('Initial Predictions:')
-        initial = test_set[0,:]
+        print('Initial Prediction:')
+        initial = np.zeros((1, len(test_set[0,:])))
+        initial[0] = test_set[0,:]
         print(initial)
-        print(self.model.predict(test_set))
-        print(test_label)
+        print(self.model.predict(initial))
+        print(test_label[0])

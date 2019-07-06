@@ -50,12 +50,13 @@ FEATURE INDEXES FOR NEURAL NETS:
 [18-23]: did I & enemy play R/P/S 4 rounds aho? (0/1)
 [24-29]: did I & enemy play R/P/S 5 rounds aho? (0/1)
 [30]: round (1-10)/10
-[31]: score (-1/-0.5/0/0.5/1)
+[31]: score(win) (0/0.5/1)
+[32]: score(lose) (0/0.5/1)
 --- end of game data, start of personal data ---
-[32]: age (value/100)
-[33]: male/???/female (1/0/-1)
-[34]: education (?)
-[35]: income (?)
+[33]: age (value/100)
+[34]: male/???/female (1/0/-1)
+[35]: education (?)
+[36]: income (?)
 """
 num_class = 3
 feature_dim = 12
@@ -80,6 +81,6 @@ labels = np.load('labels.npy')
 print("FFNN:")
 MLP = MultiLayerPerceptron(20, len(neural_data[0]))
 print("Training..")
-MLP.train(neural_data, labels, False)
+MLP.train(neural_data, labels, True)
 print("Testing..")
 MLP.test(neural_data, labels)

@@ -9,7 +9,7 @@ import numpy as np
 """Constants"""
 NUM_CLASSES = int(3060)
 NUM_FEATURES_BAYES = int(12)
-NUM_FEATURES_NN = int(32)
+NUM_FEATURES_NN = int(33)
 """---"""
 
 def NN_feature_shift(feature_list, rock_list, paper_list, scissors_list, e_rock_list, e_paper_list, e_scissors_list, index):
@@ -131,8 +131,10 @@ for line in f:
         if index != NUM_CLASSES-1 and index != (NUM_CLASSES/2)-1:
             list[index+1][6] += 0
             list[int(index+(NUM_CLASSES/2))+1][6] += 0
-            nn_list[index+1][6] += 0
-            nn_list[int(index+(NUM_CLASSES/2))+1][6] += 0
+            nn_list[index+1][31] += 0
+            nn_list[index+1][32] += 0
+            nn_list[int(index+(NUM_CLASSES/2))+1][31] += 0
+            nn_list[int(index+(NUM_CLASSES/2))+1][32] += 0
     elif "sp" in line:
         if index != 0 and not unique:
             list[index][4] = list[index-1][3]
@@ -161,8 +163,10 @@ for line in f:
         if index != NUM_CLASSES-1 and index != (NUM_CLASSES/2)-1:
             list[index+1][6] += -1
             list[int(index+(NUM_CLASSES/2))+1][6] += 1
-            nn_list[index+1][6] += -0.5
-            nn_list[int(index+(NUM_CLASSES/2))+1][6] += 0.5
+            nn_list[index+1][31] += 0
+            nn_list[index+1][32] += 0.5
+            nn_list[int(index+(NUM_CLASSES/2))+1][31] += 0.5
+            nn_list[int(index+(NUM_CLASSES/2))+1][32] += 0
     elif "sx" in line:
         if index != 0 and not unique:
             list[index][4] = list[index-1][3]
@@ -191,8 +195,10 @@ for line in f:
         if index != NUM_CLASSES-1 and index != (NUM_CLASSES/2)-1:
             list[index+1][6] += 1
             list[int(index+(NUM_CLASSES/2))+1][6] += -1
-            nn_list[index+1][6] += 0.5
-            nn_list[int(index+(NUM_CLASSES/2))+1][6] += -0.5
+            nn_list[index+1][31] += 0.5
+            nn_list[index+1][32] += 0
+            nn_list[int(index+(NUM_CLASSES/2))+1][31] += 0
+            nn_list[int(index+(NUM_CLASSES/2))+1][32] += 0.5
     elif "ps" in line:
         if index != 0 and not unique:
             list[index][4] = list[index-1][3]
@@ -221,8 +227,10 @@ for line in f:
         if index != NUM_CLASSES-1 and index != (NUM_CLASSES/2)-1:
             list[index+1][6] += 1
             list[int(index+(NUM_CLASSES/2))+1][6] += -1
-            nn_list[index+1][6] += 0.5
-            nn_list[int(index+(NUM_CLASSES/2))+1][6] += -0.5
+            nn_list[index+1][31] += 0.5
+            nn_list[index+1][32] += 0
+            nn_list[int(index+(NUM_CLASSES/2))+1][31] += 0
+            nn_list[int(index+(NUM_CLASSES/2))+1][32] += 0.5
     elif "pp" in line:
         if index != 0 and not unique:
             list[index][4] = list[index-1][3]
@@ -251,8 +259,10 @@ for line in f:
         if index != NUM_CLASSES-1 and index != (NUM_CLASSES/2)-1:
             list[index+1][6] += 0
             list[int(index+(NUM_CLASSES/2))+1][6] += 0
-            nn_list[index+1][6] += 0
-            nn_list[int(index+(NUM_CLASSES/2))+1][6] += 0
+            nn_list[index+1][31] += 0
+            nn_list[index+1][32] += 0
+            nn_list[int(index+(NUM_CLASSES/2))+1][31] += 0
+            nn_list[int(index+(NUM_CLASSES/2))+1][32] += 0
     elif "px" in line:
         if index != 0 and not unique:
             list[index][4] = list[index-1][3]
@@ -281,8 +291,10 @@ for line in f:
         if index != NUM_CLASSES-1 and index != (NUM_CLASSES/2)-1:
             list[index+1][6] += -1
             list[int(index+(NUM_CLASSES/2))+1][6] += 1
-            nn_list[index+1][6] += -0.5
-            nn_list[int(index+(NUM_CLASSES/2))+1][6] += 0.5
+            nn_list[index+1][31] += 0
+            nn_list[index+1][32] += 0.5
+            nn_list[int(index+(NUM_CLASSES/2))+1][31] += 0.5
+            nn_list[int(index+(NUM_CLASSES/2))+1][32] += 0
     elif "xs" in line:
         if index != 0 and not unique:
             list[index][4] = list[index-1][3]
@@ -311,8 +323,10 @@ for line in f:
         if index != NUM_CLASSES-1 and index != (NUM_CLASSES/2)-1:
             list[index+1][6] += -1
             list[int(index+(NUM_CLASSES/2))+1][6] += 1
-            nn_list[index+1][6] += -0.5
-            nn_list[int(index+(NUM_CLASSES/2))+1][6] += 0.5
+            nn_list[index+1][31] += 0
+            nn_list[index+1][32] += 0.5
+            nn_list[int(index+(NUM_CLASSES/2))+1][31] += 0.5
+            nn_list[int(index+(NUM_CLASSES/2))+1][32] += 0
     elif "xp" in line:
         if index != 0 and not unique:
             list[index][4] = list[index-1][3]
@@ -341,8 +355,10 @@ for line in f:
         if index != NUM_CLASSES-1 and index != (NUM_CLASSES/2)-1:
             list[index+1][6] += 1
             list[int(index+(NUM_CLASSES/2))+1][6] += -1
-            nn_list[index+1][6] += 0.5
-            nn_list[int(index+(NUM_CLASSES/2))+1][6] += -0.5
+            nn_list[index+1][31] += 0.5
+            nn_list[index+1][32] += 0
+            nn_list[int(index+(NUM_CLASSES/2))+1][31] += 0
+            nn_list[int(index+(NUM_CLASSES/2))+1][32] += 0.5
     elif "xx" in line:
         if index != 0 and not unique:
             list[index][4] = list[index-1][3]
@@ -371,8 +387,10 @@ for line in f:
         if index != NUM_CLASSES-1 and index != (NUM_CLASSES/2)-1:
             list[index+1][6] += 0
             list[int(index+(NUM_CLASSES/2))+1][6] += 0
-            nn_list[index+1][6] += 0
-            nn_list[int(index+(NUM_CLASSES/2))+1][6] += 0
+            nn_list[index+1][31] += 0
+            nn_list[index+1][32] += 0
+            nn_list[int(index+(NUM_CLASSES/2))+1][31] += 0
+            nn_list[int(index+(NUM_CLASSES/2))+1][32] += 0
 
     if round / 9 < 1:
         round += 1
